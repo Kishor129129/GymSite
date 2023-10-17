@@ -1,0 +1,781 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.3s linear;
+    outline: none;
+}
+*::selection{
+    background-color: yellowgreen;
+    color: #fff;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+/* Start Header */
+header{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),
+    url(./images/background.jpg);
+    background-position: center;
+    background-size: cover;
+    clip-path: polygon(100% 0, 100% 91%, 49% 100%, 0 89%, 0 0);
+}
+nav{
+    padding: 2% 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    
+}
+nav .logo{
+    font-size: 3rem;
+    cursor: pointer;
+}
+nav .logo span{
+    color: yellowgreen;
+}
+nav .links{
+    padding-left: 0;
+}
+nav .links li{
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+nav .links li a{
+    color: #fff;
+}
+.links .active{
+    color: yellowgreen;
+}
+nav .links li a:hover{
+    color: yellowgreen;
+}
+header .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+header .content h1{
+    font-size: 8rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+.btn{
+    padding: 0.5rem 1.5rem;
+    background-color: transparent;
+    border: 0.3rem solid yellowgreen;
+    color: yellowgreen;
+    margin-top: 1.8rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+}
+.btn:hover{
+    background-color: yellowgreen;
+    color: #fff;
+}
+nav .open,.close{
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: yellowgreen;
+    display: none;
+}
+@media (max-width:850px) {
+    nav .links{
+        height: 25rem;
+        width: 60%;
+        position: fixed;
+        top: 0;
+        right:0;
+        border-radius: 1.2rem;
+        background-color: #fff;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999;
+    }
+    nav .links li{
+        font-size: 1.8rem;
+        margin: 0.5rem;
+    }
+    nav .links li a{
+        color: #000;
+    }
+    nav .open,nav .links .close{
+        display: block;
+        position: absolute;
+        top: 1.8rem;
+        right: 1.8rem;
+    }
+    header .content h1{
+        font-size: 6rem;
+    }
+}
+/* Start About */
+.about .row{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2% 6%;
+}
+.about .row .image{
+    flex: 1 1 40rem;
+    padding: 2rem;
+}
+.about .row .image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.about .row .content{
+    flex: 1 1 40rem;
+    padding: 2rem;
+    text-align: center;
+}
+.about .row .content h1{
+    font-size: 3rem;
+    color: yellowgreen;
+    margin-bottom: 5rem;
+}
+.about .row .content p{
+    line-height: 1.7;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+/* Start Services */
+.services{
+    min-height: 100vh;
+    text-align: center;
+    padding: 2% 6%;
+}
+.services h1{
+    font-size: 3.8rem;
+    padding: 0.5rem;
+    display: inline-block;
+    color: yellowgreen;
+    border-bottom: .3rem solid yellowgreen;
+    margin-bottom: 1.8rem;
+}
+.services .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.services .container .box{
+    width: 31rem;
+    height: 31rem;
+    margin: .5rem;
+    position: relative;
+    overflow: hidden;
+}
+.services .container .box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.services .container .box .info{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: bottom;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.services .container .box:hover .info{
+    transform: translate(-50%, -50%) scale(1);
+}
+.services .container .box .info h3{
+    font-size: 3rem;
+    color: yellowgreen;
+    margin-bottom: 1.2rem;
+}
+.services .container .box .info p{
+    line-height: 2;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    margin-bottom: 1.2rem;
+}
+/* Start Trainers */
+.trainers{
+    min-height: 100vh;
+    text-align: center;
+    padding: 2% 6%;
+}
+.trainers h1{
+    font-size: 3.8rem;
+    padding: 0.5rem;
+    display: inline-block;
+    color: yellowgreen;
+    border-bottom: .3rem solid yellowgreen;
+    margin-bottom: 1.8rem;
+}
+.trainers p{
+    font-size: 1.5rem;
+    color: #333;
+}
+.trainers .items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.trainers .items .item{
+    height: 40rem;
+    width: 24rem;
+    margin: 5rem 1rem;
+}
+.trainers .item img{
+    width: 100%;
+    height: 100%;
+    border-radius: .6rem;
+    object-fit: cover;
+}
+.trainers .item .inner{
+    position: relative;
+    z-index: 9999;
+    padding: 0 1rem;
+}
+.trainers .item:hover{
+    transform: translateY(-20px);
+}
+.trainers .item .inner .info{
+    background-color: yellowgreen;
+    padding: 1.2rem 1rem;
+    border-radius: 0.6rem;
+    margin-top: -2.5rem;
+}
+.trainers .item:hover .info{
+    transform: translateY(-30px);
+}
+.trainers .item .inner .info h4{
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
+}
+.trainers .item .inner .info p{
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #333;
+    margin-top: .6rem;
+}
+.trainers .item .inner .info .links{
+    margin-top: 1rem;
+}
+.trainers .item .inner .info .links a{
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    background-color: #fff;
+    border-radius: 50%;
+    color: yellowgreen;
+    text-align: center;
+    line-height: 2rem;
+    margin-left: 0.3rem;
+    font-size: 1.1rem;
+}
+.trainers .item .inner .info .links a:hover{
+    box-shadow: 0 0 .6rem #000;
+}
+/* Start Plan */
+.pricing_table{
+    min-height: 100vh;
+    padding: 2% 6%;
+    text-align: center;
+}
+.pricing_table h1{
+    font-size: 3.8rem;
+    padding: 0.5rem;
+    display: inline-block;
+    color: yellowgreen;
+    border-bottom: .3rem solid yellowgreen;
+    margin-bottom: 2.2rem;
+}
+.pricing_table .pricing_card{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.pricing_card .pricing_box{
+    width: 30rem;
+    box-shadow: 2px 2px 6px #000;
+    margin-bottom: 4rem;
+}
+.pricing_card .pricing_box:hover{
+    transform: translateY(-30px);
+}
+.pricing_box h2{
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    background-color: yellowgreen;
+    padding: 1.2rem;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.pricing_box h3{
+    margin-top: 2rem;
+    font-size: 4rem;
+    color: yellowgreen;
+}
+.pricing_box h3 sup{
+    font-size: 2rem;
+}
+.pricing_box h3 span{
+    font-size: 2.5rem;
+}
+.pricing_box p{
+    font-size: 2.5rem;
+    color: #333;
+}
+.pricing_box ul{
+    padding: 2rem;
+}
+.pricing_box ul li{
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+.pricing_box .btn{
+    margin-bottom: 2rem;
+}
+/* Start Register */
+.register{
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url(./images/register.jpg);
+    min-height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+.register h1{
+    font-size: 3.8rem;
+    padding: 0.5rem;
+    display: inline-block;
+    color: yellowgreen;
+    border-bottom: .3rem solid yellowgreen;
+    margin-bottom: 2.2rem;
+}
+.register form{
+    padding: 2% 6%;
+    margin: 0 auto;
+}
+.register form .input_box{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.register form .input_box input,textarea{
+    height: 4rem;
+    width: 49%;
+    background-color: transparent;
+    color: #ddd;
+    padding: 3rem 1rem;
+    margin: 1rem 0;
+    font-size: 2rem;
+    border: 1px solid #ddd;
+}
+.register form textarea{
+    height: 20rem;
+    width: 100%;
+    resize: none;
+    padding: 1rem;
+}
+@media (max-width:1100px) {
+    .register form .input_box input{
+        width: 100%;
+    }
+}
+/* Start Footer */
+footer{
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    background-color: #333;
+    font-size: 1.8rem;
+}
+.payz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:25px;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #fff 60%, yellowgreen 40.1%);
+  }
+  
+  .payz form{
+    padding:20px;
+    width:700px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  }
+  
+  .payz form .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+  }
+  
+  .payz form .row .col{
+    flex:1 1 250px;
+  }
+  
+  .payz form .row .col .title{
+    font-size: 20px;
+    color:#333;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+  }
+  
+  .payz form .row .col .inputBox{
+    margin:15px 0;
+  }
+  
+  .payz form .row .col .inputBox span{
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .payz form .row .col .inputBox input{
+    width: 100%;
+    border:1px solid #ccc;
+    padding:10px 15px;
+    font-size: 15px;
+    text-transform: none;
+  }
+  
+  .payz form .row .col .inputBox input:focus{
+    border:1px solid #000;
+  }
+  
+  .payz form .row .col .flex{
+    display: flex;
+    gap:15px;
+  }
+  
+  .payz form .row .col .flex .inputBox{
+    margin-top: 5px;
+  }
+  
+  .payz form .row .col .inputBox img{
+    height: 34px;
+    margin-top: 5px;
+    filter: drop-shadow(0 0 1px #000);
+  }
+  
+  .payz form .submit-btn{
+    width: 100%;
+    padding:12px;
+    font-size: 17px;
+    background: #27ae60;
+    color:#fff;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  
+  .payz form .submit-btn:hover{
+    background: yellowgreen;
+  }
+
+#successMessage{
+    display: none;
+    color:white;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
