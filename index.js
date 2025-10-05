@@ -54,8 +54,11 @@ registrationForm.addEventListener('submit', function(event) {
     // Display the success message
     successMessage.style.display = 'block';
 
-    // Optionally clear the form fields after submission
+    // Hide the success message after 5 seconds
+    setTimeout(function() {
+        successMessage.style.display = 'none';
+    }, 5000);
+
+    // Clear the form fields after submission
     registrationForm.reset();
 });
-
-
