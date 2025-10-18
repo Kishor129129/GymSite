@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Awesome Fonts -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Classes & Schedule - GymSite</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Start Header -->
+    <header>
+        <nav>
+            <div class="logo">GYM<span>SITE</span></div>
+            <div class="open"><i class="fas fa-bars"></i></div>
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about1">About</a></li>
+                <li><a href="index.html#services1">Services</a></li>
+                <li><a href="#" class="active">Classes</a></li>
+                <li><a href="index.html#trainers1">Trainers</a></li>
+                <li><a href="index.html#pricing_table1">Plan</a></li>
+                <li><a href="index.html#register1">Register</a></li>
+                <div class="close"><i class="fas fa-times"></i></div>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>Classes & Schedule</h1>
+            <p>Book your favorite classes and join our community</p>
+        </div>
+    </header>
+
+    <!-- Weekly Schedule -->
+    <section class="schedule-section">
+        <div class="container">
+            <h1>Weekly Class Schedule</h1>
+            <div class="schedule-filters">
+                <button class="filter-btn active" data-day="all">All Days</button>
+                <button class="filter-btn" data-day="monday">Monday</button>
+                <button class="filter-btn" data-day="tuesday">Tuesday</button>
+                <button class="filter-btn" data-day="wednesday">Wednesday</button>
+                <button class="filter-btn" data-day="thursday">Thursday</button>
+                <button class="filter-btn" data-day="friday">Friday</button>
+                <button class="filter-btn" data-day="saturday">Saturday</button>
+                <button class="filter-btn" data-day="sunday">Sunday</button>
+            </div>
+            
+            <div class="schedule-grid">
+                <!-- Monday -->
+                <div class="day-column" data-day="monday">
+                    <h3>Monday</h3>
+                    <div class="class-slot">
+                        <div class="class-time">7:00 AM - 8:00 AM</div>
+                        <div class="class-details">
+                            <h4>Morning Yoga</h4>
+                            <p>Trainer: Sarah Johnson</p>
+                            <p>12/15 spots</p>
+                            <button class="btn book-schedule" data-class="yoga-morning-mon">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">8:00 AM - 9:00 AM</div>
+                        <div class="class-details">
+                            <h4>HIIT Cardio</h4>
+                            <p>Trainer: Lisa Rodriguez</p>
+                            <p>5/20 spots</p>
+                            <button class="btn book-schedule" data-class="hiit-cardio-mon">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">10:00 AM - 11:00 AM</div>
+                        <div class="class-details">
+                            <h4>Pilates</h4>
+                            <p>Trainer: Emma Thompson</p>
+                            <p>7/10 spots</p>
+                            <button class="btn book-schedule" data-class="pilates-mon">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">6:30 PM - 7:30 PM</div>
+                        <div class="class-details">
+                            <h4>Zumba Dance</h4>
+                            <p>Trainer: Maria Garcia</p>
+                            <p>15/25 spots</p>
+                            <button class="btn book-schedule" data-class="zumba-mon">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuesday -->
+                <div class="day-column" data-day="tuesday">
+                    <h3>Tuesday</h3>
+                    <div class="class-slot">
+                        <div class="class-time">7:00 AM - 8:00 AM</div>
+                        <div class="class-details">
+                            <h4>Morning Yoga</h4>
+                            <p>Trainer: Sarah Johnson</p>
+                            <p>10/15 spots</p>
+                            <button class="btn book-schedule" data-class="yoga-morning-tue">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">6:00 PM - 7:00 PM</div>
+                        <div class="class-details">
+                            <h4>Boxing Training</h4>
+                            <p>Trainer: Mike Chen</p>
+                            <p>8/12 spots</p>
+                            <button class="btn book-schedule" data-class="boxing-evening-tue">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">7:00 PM - 8:00 PM</div>
+                        <div class="class-details">
+                            <h4>Strength Training</h4>
+                            <p>Trainer: David Wilson</p>
+                            <p>10/15 spots</p>
+                            <button class="btn book-schedule" data-class="strength-training-tue">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wednesday -->
+                <div class="day-column" data-day="wednesday">
+                    <h3>Wednesday</h3>
+                    <div class="class-slot">
+                        <div class="class-time">7:00 AM - 8:00 AM</div>
+                        <div class="class-details">
+                            <h4>Morning Yoga</h4>
+                            <p>Trainer: Sarah Johnson</p>
+                            <p>14/15 spots</p>
+                            <button class="btn book-schedule" data-class="yoga-morning-wed">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">8:00 AM - 9:00 AM</div>
+                        <div class="class-details">
+                            <h4>HIIT Cardio</h4>
+                            <p>Trainer: Lisa Rodriguez</p>
+                            <p>3/20 spots</p>
+                            <button class="btn book-schedule" data-class="hiit-cardio-wed">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">10:00 AM - 11:00 AM</div>
+                        <div class="class-details">
+                            <h4>Pilates</h4>
+                            <p>Trainer: Emma Thompson</p>
+                            <p>9/10 spots</p>
+                            <button class="btn book-schedule" data-class="pilates-wed">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">6:30 PM - 7:30 PM</div>
+                        <div class="class-details">
+                            <h4>Zumba Dance</h4>
+                            <p>Trainer: Maria Garcia</p>
+                            <p>18/25 spots</p>
+                            <button class="btn book-schedule" data-class="zumba-wed">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thursday -->
+                <div class="day-column" data-day="thursday">
+                    <h3>Thursday</h3>
+                    <div class="class-slot">
+                        <div class="class-time">7:00 AM - 8:00 AM</div>
+                        <div class="class-details">
+                            <h4>Morning Yoga</h4>
+                            <p>Trainer: Sarah Johnson</p>
+                            <p>11/15 spots</p>
+                            <button class="btn book-schedule" data-class="yoga-morning-thu">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">6:00 PM - 7:00 PM</div>
+                        <div class="class-details">
+                            <h4>Boxing Training</h4>
+                            <p>Trainer: Mike Chen</p>
+                            <p>6/12 spots</p>
+                            <button class="btn book-schedule" data-class="boxing-evening-thu">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">7:00 PM - 8:00 PM</div>
+                        <div class="class-details">
+                            <h4>Strength Training</h4>
+                            <p>Trainer: David Wilson</p>
+                            <p>12/15 spots</p>
+                            <button class="btn book-schedule" data-class="strength-training-thu">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Friday -->
+                <div class="day-column" data-day="friday">
+                    <h3>Friday</h3>
+                    <div class="class-slot">
+                        <div class="class-time">7:00 AM - 8:00 AM</div>
+                        <div class="class-details">
+                            <h4>Morning Yoga</h4>
+                            <p>Trainer: Sarah Johnson</p>
+                            <p>13/15 spots</p>
+                            <button class="btn book-schedule" data-class="yoga-morning-fri">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">8:00 AM - 9:00 AM</div>
+                        <div class="class-details">
+                            <h4>HIIT Cardio</h4>
+                            <p>Trainer: Lisa Rodriguez</p>
+                            <p>7/20 spots</p>
+                            <button class="btn book-schedule" data-class="hiit-cardio-fri">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">10:00 AM - 11:00 AM</div>
+                        <div class="class-details">
+                            <h4>Pilates</h4>
+                            <p>Trainer: Emma Thompson</p>
+                            <p>8/10 spots</p>
+                            <button class="btn book-schedule" data-class="pilates-fri">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">6:30 PM - 7:30 PM</div>
+                        <div class="class-details">
+                            <h4>Zumba Dance</h4>
+                            <p>Trainer: Maria Garcia</p>
+                            <p>20/25 spots</p>
+                            <button class="btn book-schedule" data-class="zumba-fri">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saturday -->
+                <div class="day-column" data-day="saturday">
+                    <h3>Saturday</h3>
+                    <div class="class-slot">
+                        <div class="class-time">9:00 AM - 10:00 AM</div>
+                        <div class="class-details">
+                            <h4>Weekend Yoga</h4>
+                            <p>Trainer: Sarah Johnson</p>
+                            <p>8/20 spots</p>
+                            <button class="btn book-schedule" data-class="yoga-weekend-sat">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">10:30 AM - 11:30 AM</div>
+                        <div class="class-details">
+                            <h4>Family Fitness</h4>
+                            <p>Trainer: Lisa Rodriguez</p>
+                            <p>12/15 spots</p>
+                            <button class="btn book-schedule" data-class="family-fitness-sat">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">6:00 PM - 7:00 PM</div>
+                        <div class="class-details">
+                            <h4>Boxing Training</h4>
+                            <p>Trainer: Mike Chen</p>
+                            <p>4/12 spots</p>
+                            <button class="btn book-schedule" data-class="boxing-evening-sat">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sunday -->
+                <div class="day-column" data-day="sunday">
+                    <h3>Sunday</h3>
+                    <div class="class-slot">
+                        <div class="class-time">9:00 AM - 10:00 AM</div>
+                        <div class="class-details">
+                            <h4>Weekend Yoga</h4>
+                            <p>Trainer: Sarah Johnson</p>
+                            <p>15/20 spots</p>
+                            <button class="btn book-schedule" data-class="yoga-weekend-sun">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">10:30 AM - 11:30 AM</div>
+                        <div class="class-details">
+                            <h4>Family Fitness</h4>
+                            <p>Trainer: Lisa Rodriguez</p>
+                            <p>10/15 spots</p>
+                            <button class="btn book-schedule" data-class="family-fitness-sun">Book</button>
+                        </div>
+                    </div>
+                    <div class="class-slot">
+                        <div class="class-time">5:00 PM - 6:00 PM</div>
+                        <div class="class-details">
+                            <h4>Meditation & Relaxation</h4>
+                            <p>Trainer: Emma Thompson</p>
+                            <p>18/25 spots</p>
+                            <button class="btn book-schedule" data-class="meditation-sun">Book</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Bookings Section -->
+    <section class="my-bookings">
+        <div class="container">
+            <h1>My Bookings</h1>
+            <div class="bookings-list" id="bookingsList">
+                <div class="no-bookings">
+                    <i class="fas fa-calendar-times"></i>
+                    <p>No classes booked yet. Book your first class above!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start Footer -->
+    <footer>
+        created by &copy; Karthik K C, Kishor A H, U Tarun Raju, Yashwanth Chikki H D
+    </footer>
+    
+    <script src="index.js" charset="UTF-8"></script>
+    <script src="classes.js" charset="UTF-8"></script>
+</body>
+
+</html>

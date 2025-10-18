@@ -216,6 +216,260 @@ nav .open,.close{
     padding: 0 1rem;
     margin-bottom: 1.2rem;
 }
+/* Start Classes */
+.classes{
+    min-height: 100vh;
+    text-align: center;
+    padding: 2% 6%;
+    background-color: #f8f9fa;
+}
+.classes h1{
+    font-size: 3.8rem;
+    padding: 0.5rem;
+    display: inline-block;
+    color: yellowgreen;
+    border-bottom: .3rem solid yellowgreen;
+    margin-bottom: 1.8rem;
+}
+.classes p{
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+}
+.classes-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+.class-card{
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.class-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.class-image{
+    height: 200px;
+    overflow: hidden;
+}
+.class-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.class-card:hover .class-image img{
+    transform: scale(1.1);
+}
+.class-info{
+    padding: 1.5rem;
+    text-align: left;
+}
+.class-info h3{
+    font-size: 1.8rem;
+    color: yellowgreen;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.class-info p{
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+.class-info p i{
+    margin-right: 0.5rem;
+    color: yellowgreen;
+    width: 20px;
+}
+.class-info .btn{
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+}
+.view-all-classes{
+    text-align: center;
+    margin-top: 2rem;
+}
+.view-all-classes .btn{
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+}
+@media (max-width: 768px) {
+    .classes-container{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .classes h1{
+        font-size: 2.5rem;
+    }
+}
+/* Schedule Page Styles */
+.schedule-section{
+    min-height: 100vh;
+    padding: 2% 6%;
+    background-color: #f8f9fa;
+}
+.schedule-section h1{
+    font-size: 3.8rem;
+    padding: 0.5rem;
+    display: inline-block;
+    color: yellowgreen;
+    border-bottom: .3rem solid yellowgreen;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+}
+.schedule-filters{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+.filter-btn{
+    padding: 0.8rem 1.5rem;
+    background-color: transparent;
+    border: 0.2rem solid yellowgreen;
+    color: yellowgreen;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover,
+.filter-btn.active{
+    background-color: yellowgreen;
+    color: #fff;
+}
+.schedule-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.day-column{
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.day-column h3{
+    font-size: 1.8rem;
+    color: yellowgreen;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid yellowgreen;
+}
+.class-slot{
+    background: #f8f9fa;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 0.3rem solid yellowgreen;
+}
+.class-time{
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.class-details h4{
+    color: yellowgreen;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+.class-details p{
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+.class-details .btn{
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+.my-bookings{
+    min-height: 50vh;
+    padding: 2% 6%;
+    background-color: #fff;
+}
+.my-bookings h1{
+    font-size: 3rem;
+    color: yellowgreen;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.bookings-list{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.no-bookings{
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+.no-bookings i{
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+.booking-item{
+    background: #f8f9fa;
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 0.3rem solid yellowgreen;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.booking-info h4{
+    color: yellowgreen;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+.booking-info p{
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+.cancel-btn{
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+.cancel-btn:hover{
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+@media (max-width: 768px) {
+    .schedule-grid{
+        grid-template-columns: 1fr;
+    }
+    .schedule-filters{
+        justify-content: center;
+    }
+    .filter-btn{
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+    .booking-item{
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
 /* Start Trainers */
 .trainers{
     min-height: 100vh;
