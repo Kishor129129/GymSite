@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Awesome Fonts -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Member Dashboard - GymSite</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Start Header -->
+    <header>
+        <nav>
+            <div class="logo">GYM<span>SITE</span></div>
+            <div class="open"><i class="fas fa-bars"></i></div>
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about1">About</a></li>
+                <li><a href="index.html#services1">Services</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="index.html#trainers1">Trainers</a></li>
+                <li><a href="index.html#pricing_table1">Plan</a></li>
+                <li><a href="#" class="active">Dashboard</a></li>
+                <div class="close"><i class="fas fa-times"></i></div>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>Member Dashboard</h1>
+            <p>Track your fitness journey and achieve your goals</p>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-card">
+                    <h2>Welcome back, <span id="memberName">Member</span>!</h2>
+                    <p>Keep up the great work on your fitness journey!</p>
+                    <div class="member-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-fire"></i>
+                            <span class="stat-number" id="currentStreak">0</span>
+                            <span class="stat-label">Day Streak</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <span class="stat-number" id="workoutsThisWeek">0</span>
+                            <span class="stat-label">Workouts This Week</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <span class="stat-number" id="classesBooked">0</span>
+                            <span class="stat-label">Classes Booked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="openWorkoutLogger()">
+                        <i class="fas fa-plus"></i>
+                        <span>Log Workout</span>
+                    </button>
+                    <button class="action-btn" onclick="openProgressPhotos()">
+                        <i class="fas fa-camera"></i>
+                        <span>Add Progress Photo</span>
+                    </button>
+                    <button class="action-btn" onclick="openGoalSetter()">
+                        <i class="fas fa-target"></i>
+                        <span>Set Goal</span>
+                    </button>
+                    <button class="action-btn" onclick="window.location.href='classes.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Book Class</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Recent Activity -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                    <div class="activity-list" id="recentActivity">
+                        <div class="no-activity">
+                            <i class="fas fa-info-circle"></i>
+                            <p>No recent activity. Start your fitness journey!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Classes -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Upcoming Classes</h3>
+                    <div class="upcoming-classes" id="upcomingClasses">
+                        <div class="no-classes">
+                            <i class="fas fa-calendar-times"></i>
+                            <p>No upcoming classes. Book your first class!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Overview -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-chart-line"></i> Progress Overview</h3>
+                    <div class="progress-overview">
+                        <div class="progress-item">
+                            <label>Weight Goal Progress</label>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="weightProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text" id="weightProgressText">0% Complete</span>
+                        </div>
+                        <div class="progress-item">
+                            <label>Workout Consistency</label>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="consistencyProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text" id="consistencyProgressText">0% Complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-trophy"></i> Achievements</h3>
+                    <div class="achievements-grid" id="achievementsGrid">
+                        <div class="achievement-item locked">
+                            <i class="fas fa-fire"></i>
+                            <span>First Workout</span>
+                        </div>
+                        <div class="achievement-item locked">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>5 Classes</span>
+                        </div>
+                        <div class="achievement-item locked">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>10 Workouts</span>
+                        </div>
+                        <div class="achievement-item locked">
+                            <i class="fas fa-star"></i>
+                            <span>30 Day Streak</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workout Logger Modal -->
+    <div class="modal" id="workoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Log Your Workout</h3>
+                <span class="close" onclick="closeWorkoutLogger()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="workoutForm">
+                    <div class="form-group">
+                        <label>Workout Type</label>
+                        <select id="workoutType" required>
+                            <option value="">Select workout type</option>
+                            <option value="cardio">Cardio</option>
+                            <option value="strength">Strength Training</option>
+                            <option value="yoga">Yoga</option>
+                            <option value="boxing">Boxing</option>
+                            <option value="pilates">Pilates</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Duration (minutes)</label>
+                        <input type="number" id="workoutDuration" min="1" max="300" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Intensity Level</label>
+                        <select id="workoutIntensity" required>
+                            <option value="">Select intensity</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes (optional)</label>
+                        <textarea id="workoutNotes" rows="3" placeholder="How did you feel? Any specific exercises?"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Log Workout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Photos Modal -->
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Progress Photo</h3>
+                <span class="close" onclick="closeProgressPhotos()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="photoForm">
+                    <div class="form-group">
+                        <label>Photo Type</label>
+                        <select id="photoType" required>
+                            <option value="">Select photo type</option>
+                            <option value="before">Before Photo</option>
+                            <option value="progress">Progress Photo</option>
+                            <option value="after">After Photo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="photoWeight" step="0.1" min="0" max="500">
+                    </div>
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <textarea id="photoNotes" rows="3" placeholder="How are you feeling? Any changes you notice?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Photo</label>
+                        <input type="file" id="photoUpload" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn">Save Progress Photo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goal Setter Modal -->
+    <div class="modal" id="goalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Set Your Goal</h3>
+                <span class="close" onclick="closeGoalSetter()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="goalForm">
+                    <div class="form-group">
+                        <label>Goal Type</label>
+                        <select id="goalType" required>
+                            <option value="">Select goal type</option>
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="muscle-gain">Muscle Gain</option>
+                            <option value="endurance">Endurance</option>
+                            <option value="flexibility">Flexibility</option>
+                            <option value="strength">Strength</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Value</label>
+                        <input type="number" id="goalTarget" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Current Value</label>
+                        <input type="number" id="goalCurrent" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Date</label>
+                        <input type="date" id="goalDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="goalDescription" rows="3" placeholder="Describe your goal in detail..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Set Goal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Footer -->
+    <footer>
+        created by &copy; Karthik K C, Kishor A H, U Tarun Raju, Yashwanth Chikki H D
+    </footer>
+    
+    <script src="index.js" charset="UTF-8"></script>
+    <script src="dashboard.js" charset="UTF-8"></script>
+</body>
+
+</html>

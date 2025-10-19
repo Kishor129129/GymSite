@@ -55,8 +55,13 @@ registrationForm.addEventListener('submit', function(event) {
     successMessage.style.display = 'block';
 
     // Simulate user login after registration
+    const firstName = registrationForm.querySelector('input[placeholder="First Name"]').value || 'Member';
     localStorage.setItem('userLoggedIn', 'true');
     localStorage.setItem('userBookings', '[]');
+    localStorage.setItem('memberName', firstName);
+    localStorage.setItem('userWorkouts', '[]');
+    localStorage.setItem('userPhotos', '[]');
+    localStorage.setItem('userGoals', '[]');
 
     // Hide the success message after 5 seconds
     setTimeout(function() {
