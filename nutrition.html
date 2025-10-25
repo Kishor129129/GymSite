@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Awesome Fonts -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Nutrition & Meal Planning - GymSite</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Start Header -->
+    <header>
+        <nav>
+            <div class="logo">GYM<span>SITE</span></div>
+            <div class="open"><i class="fas fa-bars"></i></div>
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about1">About</a></li>
+                <li><a href="index.html#services1">Services</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="index.html#trainers1">Trainers</a></li>
+                <li><a href="index.html#pricing_table1">Plan</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#" class="active">Nutrition</a></li>
+                <div class="close"><i class="fas fa-times"></i></div>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>Nutrition & Meal Planning</h1>
+            <p>Fuel your fitness journey with proper nutrition</p>
+        </div>
+    </header>
+
+    <!-- Nutrition Dashboard -->
+    <section class="nutrition-section">
+        <div class="container">
+            <!-- Daily Nutrition Overview -->
+            <div class="nutrition-overview">
+                <h2>Today's Nutrition</h2>
+                <div class="nutrition-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="caloriesConsumed">0</h3>
+                            <p>Calories Consumed</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="caloriesProgress" style="width: 0%"></div>
+                            </div>
+                            <span id="caloriesGoal">Goal: 2000</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="proteinConsumed">0g</h3>
+                            <p>Protein</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="proteinProgress" style="width: 0%"></div>
+                            </div>
+                            <span id="proteinGoal">Goal: 150g</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="waterConsumed">0</h3>
+                            <p>Glasses of Water</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="waterProgress" style="width: 0%"></div>
+                            </div>
+                            <span id="waterGoal">Goal: 8 glasses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="nutrition-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="openMealLogger()">
+                        <i class="fas fa-utensils"></i>
+                        <span>Log Meal</span>
+                    </button>
+                    <button class="action-btn" onclick="openWaterTracker()">
+                        <i class="fas fa-tint"></i>
+                        <span>Add Water</span>
+                    </button>
+                    <button class="action-btn" onclick="openMealPlanner()">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Plan Meals</span>
+                    </button>
+                    <button class="action-btn" onclick="openRecipeFinder()">
+                        <i class="fas fa-book"></i>
+                        <span>Find Recipes</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Nutrition Grid -->
+            <div class="nutrition-grid">
+                <!-- Today's Meals -->
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-utensils"></i> Today's Meals</h3>
+                    <div class="meals-list" id="mealsList">
+                        <div class="no-meals">
+                            <i class="fas fa-info-circle"></i>
+                            <p>No meals logged today. Start tracking your nutrition!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meal Planning -->
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Weekly Meal Plan</h3>
+                    <div class="meal-plan-calendar" id="mealPlanCalendar">
+                        <div class="calendar-header">
+                            <button class="nav-btn" onclick="previousWeek()"><i class="fas fa-chevron-left"></i></button>
+                            <h4 id="currentWeek">Week of Dec 18, 2023</h4>
+                            <button class="nav-btn" onclick="nextWeek()"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrition Goals -->
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-target"></i> Nutrition Goals</h3>
+                    <div class="goals-list" id="nutritionGoals">
+                        <div class="no-goals">
+                            <i class="fas fa-bullseye"></i>
+                            <p>Set your nutrition goals to get started!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Suggestions -->
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-lightbulb"></i> Recipe Suggestions</h3>
+                    <div class="recipe-suggestions" id="recipeSuggestions">
+                        <div class="recipe-item">
+                            <img src="./images/2.jpg" alt="Healthy Breakfast">
+                            <div class="recipe-info">
+                                <h4>Protein Pancakes</h4>
+                                <p>High protein breakfast option</p>
+                                <span class="calories">320 cal</span>
+                            </div>
+                        </div>
+                        <div class="recipe-item">
+                            <img src="./images/3.jpg" alt="Healthy Lunch">
+                            <div class="recipe-info">
+                                <h4>Quinoa Salad</h4>
+                                <p>Nutritious lunch bowl</p>
+                                <span class="calories">450 cal</span>
+                            </div>
+                        </div>
+                        <div class="recipe-item">
+                            <img src="./images/4.jpg" alt="Healthy Dinner">
+                            <div class="recipe-info">
+                                <h4>Grilled Chicken</h4>
+                                <p>Lean protein dinner</p>
+                                <span class="calories">280 cal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meal Logger Modal -->
+    <div class="modal" id="mealModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Log Your Meal</h3>
+                <span class="close" onclick="closeMealLogger()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="mealForm">
+                    <div class="form-group">
+                        <label>Meal Type</label>
+                        <select id="mealType" required>
+                            <option value="">Select meal type</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Food Item</label>
+                        <input type="text" id="foodItem" placeholder="e.g., Grilled Chicken Breast" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Calories</label>
+                            <input type="number" id="mealCalories" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Protein (g)</label>
+                            <input type="number" id="mealProtein" min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Carbs (g)</label>
+                            <input type="number" id="mealCarbs" min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label>Fat (g)</label>
+                            <input type="number" id="mealFat" min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes (optional)</label>
+                        <textarea id="mealNotes" rows="3" placeholder="Any additional notes about this meal..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Log Meal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Water Tracker Modal -->
+    <div class="modal" id="waterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Water Intake</h3>
+                <span class="close" onclick="closeWaterTracker()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="waterForm">
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <select id="waterAmount" required>
+                            <option value="1">1 Glass (250ml)</option>
+                            <option value="2">2 Glasses (500ml)</option>
+                            <option value="3">3 Glasses (750ml)</option>
+                            <option value="4">4 Glasses (1L)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" id="waterTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes (optional)</label>
+                        <textarea id="waterNotes" rows="2" placeholder="Any notes about your water intake..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Add Water</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meal Planner Modal -->
+    <div class="modal" id="plannerModal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h3>Weekly Meal Planner</h3>
+                <span class="close" onclick="closeMealPlanner()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="planner-interface">
+                    <div class="planner-sidebar">
+                        <h4>Available Recipes</h4>
+                        <div class="recipe-list" id="availableRecipes">
+                            <div class="recipe-option" onclick="addRecipeToPlan('breakfast', 'Protein Pancakes', 320)">
+                                <h5>Protein Pancakes</h5>
+                                <p>320 cal • High Protein</p>
+                            </div>
+                            <div class="recipe-option" onclick="addRecipeToPlan('lunch', 'Quinoa Salad', 450)">
+                                <h5>Quinoa Salad</h5>
+                                <p>450 cal • Vegetarian</p>
+                            </div>
+                            <div class="recipe-option" onclick="addRecipeToPlan('dinner', 'Grilled Chicken', 280)">
+                                <h5>Grilled Chicken</h5>
+                                <p>280 cal • Lean Protein</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="planner-main">
+                        <div class="planner-calendar" id="plannerCalendar">
+                            <!-- Meal planner calendar will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Finder Modal -->
+    <div class="modal" id="recipeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Find Healthy Recipes</h3>
+                <span class="close" onclick="closeRecipeFinder()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="recipe-finder">
+                    <div class="search-filters">
+                        <div class="form-group">
+                            <label>Diet Type</label>
+                            <select id="dietType">
+                                <option value="">Any</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="keto">Keto</option>
+                                <option value="paleo">Paleo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Max Calories</label>
+                            <input type="number" id="maxCalories" placeholder="e.g., 500">
+                        </div>
+                        <button class="btn" onclick="searchRecipes()">Search Recipes</button>
+                    </div>
+                    <div class="recipe-results" id="recipeResults">
+                        <div class="recipe-card">
+                            <img src="./images/2.jpg" alt="Recipe">
+                            <div class="recipe-details">
+                                <h4>Greek Yogurt Parfait</h4>
+                                <p>High protein breakfast with berries</p>
+                                <div class="recipe-meta">
+                                    <span><i class="fas fa-clock"></i> 10 min</span>
+                                    <span><i class="fas fa-fire"></i> 250 cal</span>
+                                    <span><i class="fas fa-drumstick-bite"></i> 20g protein</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Footer -->
+    <footer>
+        created by &copy; Karthik K C, Kishor A H, U Tarun Raju, Yashwanth Chikki H D
+    </footer>
+    
+    <script src="index.js" charset="UTF-8"></script>
+    <script src="nutrition.js" charset="UTF-8"></script>
+</body>
+
+</html>
