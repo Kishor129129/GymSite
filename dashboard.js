@@ -31,6 +31,8 @@ function loadDashboardData() {
     loadUpcomingClasses();
     loadProgressOverview();
     loadAchievements();
+    loadCommunityActivity();
+    loadSocialStats();
 }
 
 // Load member statistics
@@ -499,3 +501,76 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Load community activity
+function loadCommunityActivity() {
+    const posts = JSON.parse(localStorage.getItem('communityPosts') || '[]');
+    const friends = JSON.parse(localStorage.getItem('communityFriends') || '[]');
+    
+    // Get recent posts from friends and user
+    const recentPosts = posts
+        .filter(post => post.userId === 'current_user' || friends.some(friend => friend.name === post.userName))
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+        .slice(0, 3);
+    
+    const container = document.getElementById('communityActivity');
+    
+    if (recentPosts.length === 0) {
+        container.innerHTML = `
+            <div class="no-community-activity">
+                <i class="fas fa-info-circle"></i>
+                <p>No recent community activity. Join the conversation!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = recentPosts.map(post => `
+        <div class="community-activity-item">
+            <div class="activity-avatar">
+                <img src="${post.userAvatar}" alt="${post.userName}">
+            </div>
+            <div class="activity-content">
+                <h4>${post.userName}</h4>
+                <p>${post.content.length > 50 ? post.content.substring(0, 50) + '...' : post.content}</p>
+                <small>${formatTimestamp(post.timestamp)}</small>
+            </div>
+            <div class="activity-stats">
+                <span><i class="fas fa-heart"></i> ${post.likes}</span>
+                <span><i class="fas fa-comment"></i> ${post.comments}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Load social statistics
+function loadSocialStats() {
+    const posts = JSON.parse(localStorage.getItem('communityPosts') || '[]');
+    const friends = JSON.parse(localStorage.getItem('communityFriends') || '[]');
+    
+    // Calculate user's social stats
+    const userPosts = posts.filter(post => post.userId === 'current_user');
+    const totalLikes = userPosts.reduce((sum, post) => sum + post.likes, 0);
+    const totalComments = userPosts.reduce((sum, post) => sum + post.comments, 0);
+    const totalFriends = friends.length;
+    
+    document.getElementById('totalLikes').textContent = totalLikes;
+    document.getElementById('totalComments').textContent = totalComments;
+    document.getElementById('totalFriends').textContent = totalFriends;
+}
+
+// Format timestamp for community activity
+function formatTimestamp(timestamp) {
+    const now = new Date();
+    const postTime = new Date(timestamp);
+    const diffInHours = Math.floor((now - postTime) / (1000 * 60 * 60));
+    
+    if (diffInHours < 1) {
+        return 'Just now';
+    } else if (diffInHours < 24) {
+        return `${diffInHours}h ago`;
+    } else {
+        const diffInDays = Math.floor(diffInHours / 24);
+        return `${diffInDays}d ago`;
+    }
+}

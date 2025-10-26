@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <title>Member Dashboard - GymSite</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="community-styles.css">
 </head>
 
 <body>
@@ -30,6 +31,7 @@
                 <li><a href="index.html#pricing_table1">Plan</a></li>
                 <li><a href="#" class="active">Dashboard</a></li>
                 <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="community.html">Community</a></li>
                 <div class="close"><i class="fas fa-times"></i></div>
             </ul>
         </nav>
@@ -90,6 +92,10 @@
                     <button class="action-btn" onclick="window.location.href='nutrition.html'">
                         <i class="fas fa-utensils"></i>
                         <span>Track Nutrition</span>
+                    </button>
+                    <button class="action-btn" onclick="window.location.href='community.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Community</span>
                     </button>
                 </div>
             </div>
@@ -158,6 +164,56 @@
                         <div class="achievement-item locked">
                             <i class="fas fa-star"></i>
                             <span>30 Day Streak</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Activity -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-users"></i> Community Activity</h3>
+                    <div class="community-activity" id="communityActivity">
+                        <div class="no-community-activity">
+                            <i class="fas fa-info-circle"></i>
+                            <p>No recent community activity. Join the conversation!</p>
+                        </div>
+                    </div>
+                    <div class="community-actions">
+                        <button class="btn" onclick="window.location.href='community.html'">
+                            <i class="fas fa-comments"></i> View Community
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Social Stats -->
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-share-alt"></i> Social Stats</h3>
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="totalLikes">0</span>
+                                <span class="stat-label">Post Likes</span>
+                            </div>
+                        </div>
+                        <div class="social-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="totalComments">0</span>
+                                <span class="stat-label">Comments</span>
+                            </div>
+                        </div>
+                        <div class="social-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="totalFriends">0</span>
+                                <span class="stat-label">Friends</span>
+                            </div>
                         </div>
                     </div>
                 </div>
