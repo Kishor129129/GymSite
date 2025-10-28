@@ -50,10 +50,16 @@ function initializeBookingSystem() {
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             
             if (!isLoggedIn) {
-                const login = confirm('You need to be logged in to book classes. Would you like to register first?');
-                if (login) {
-                    window.location.href = 'index.html#register1';
-                }
+                showToast.confirm(
+                    'Login Required',
+                    'You need to be logged in to book classes. Would you like to register first?',
+                    'Register Now',
+                    'Cancel'
+                ).then(confirmed => {
+                    if (confirmed) {
+                        window.location.href = 'index.html#register1';
+                    }
+                });
                 return;
             }
             
@@ -62,50 +68,49 @@ function initializeBookingSystem() {
             const isAlreadyBooked = existingBookings.some(booking => booking.classId === classId);
             
             if (isAlreadyBooked) {
-                alert('You have already booked this class!');
+                showToast.warning('Already Booked', 'You have already booked this class!');
                 return;
             }
             
-            // Confirm booking
-            const confirmBooking = confirm(
-                `Book "${className}" class?\n\n` +
-                `Day: ${day}\n` +
-                `Time: ${classTime}\n` +
-                `Trainer: ${trainer}\n\n` +
-                `This will reserve your spot for this session.`
-            );
-            
-            if (confirmBooking) {
-                // Create booking object
-                const booking = {
-                    id: Date.now(),
-                    classId: classId,
-                    className: className,
-                    day: day,
-                    time: classTime,
-                    trainer: trainer,
-                    bookingDate: new Date().toISOString()
-                };
-                
-                // Save booking to localStorage
-                existingBookings.push(booking);
-                localStorage.setItem('userBookings', JSON.stringify(existingBookings));
-                
-                // Update button state
-                this.textContent = 'Booked!';
-                this.style.backgroundColor = '#28a745';
-                this.style.borderColor = '#28a745';
-                this.disabled = true;
-                
-                // Show success notification
-                showBookingSuccess(className);
-                
-                // Update available spots
-                updateAvailableSpots(classSlot);
-                
-                // Refresh bookings list
-                loadUserBookings();
-            }
+            // Confirm booking with modern dialog
+            showToast.confirm(
+                'Book Class',
+                `Book "${className}" class?\n\nDay: ${day}\nTime: ${classTime}\nTrainer: ${trainer}\n\nThis will reserve your spot for this session.`,
+                'Book Now',
+                'Cancel'
+            ).then(confirmed => {
+                if (confirmed) {
+                    // Create booking object
+                    const booking = {
+                        id: Date.now(),
+                        classId: classId,
+                        className: className,
+                        day: day,
+                        time: classTime,
+                        trainer: trainer,
+                        bookingDate: new Date().toISOString()
+                    };
+                    
+                    // Save booking to localStorage
+                    existingBookings.push(booking);
+                    localStorage.setItem('userBookings', JSON.stringify(existingBookings));
+                    
+                    // Update button state
+                    button.textContent = 'Booked!';
+                    button.style.backgroundColor = '#28a745';
+                    button.style.borderColor = '#28a745';
+                    button.disabled = true;
+                    
+                    // Show success notification
+                    showToast.success('Class Booked!', `Successfully booked "${className}" class!`);
+                    
+                    // Update available spots
+                    updateAvailableSpots(classSlot);
+                    
+                    // Refresh bookings list
+                    loadUserBookings();
+                }
+            });
         });
     });
 }

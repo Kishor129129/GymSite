@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Notification Demo - GymSite</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="toast.js"></script>
+    <style>
+        .demo-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .demo-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .demo-btn {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .demo-btn.success {
+            background: #28a745;
+            color: white;
+        }
+        .demo-btn.error {
+            background: #dc3545;
+            color: white;
+        }
+        .demo-btn.warning {
+            background: #ffc107;
+            color: #333;
+        }
+        .demo-btn.info {
+            background: #17a2b8;
+            color: white;
+        }
+        .demo-btn.confirm {
+            background: yellowgreen;
+            color: white;
+        }
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🍞 Toast Notification System Demo</h1>
+        <p>Experience the modern notification system that replaces basic browser alerts!</p>
+        
+        <div class="demo-buttons">
+            <button class="demo-btn success" onclick="showToast.success('Success!', 'Your class has been booked successfully!')">
+                Success Toast
+            </button>
+            
+            <button class="demo-btn error" onclick="showToast.error('Error!', 'Failed to book class. Please try again.')">
+                Error Toast
+            </button>
+            
+            <button class="demo-btn warning" onclick="showToast.warning('Warning!', 'You have already booked this class!')">
+                Warning Toast
+            </button>
+            
+            <button class="demo-btn info" onclick="showToast.info('Info', 'New classes are available for booking!')">
+                Info Toast
+            </button>
+            
+            <button class="demo-btn confirm" onclick="testConfirmDialog()">
+                Confirmation Dialog
+            </button>
+            
+            <button class="demo-btn" onclick="testMultipleToasts()" style="background: #6c757d; color: white;">
+                Multiple Toasts
+            </button>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px; text-align: left;">
+            <h3>✨ Features:</h3>
+            <ul>
+                <li><strong>4 Toast Types:</strong> Success, Error, Warning, Info</li>
+                <li><strong>Modern Design:</strong> Clean, professional appearance</li>
+                <li><strong>Smooth Animations:</strong> Slide-in/out transitions</li>
+                <li><strong>Auto-dismiss:</strong> Configurable duration</li>
+                <li><strong>Manual Close:</strong> Click X to dismiss</li>
+                <li><strong>Progress Bar:</strong> Visual countdown</li>
+                <li><strong>Confirmation Dialogs:</strong> Replace native confirm()</li>
+                <li><strong>Mobile Responsive:</strong> Works on all devices</li>
+                <li><strong>Keyboard Support:</strong> Escape key to close</li>
+                <li><strong>Multiple Toasts:</strong> Stack multiple notifications</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="index.html" style="color: yellowgreen; text-decoration: none; font-weight: 500;">
+                ← Back to GymSite
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function testConfirmDialog() {
+            showToast.confirm(
+                'Book Class',
+                'Are you sure you want to book the "Morning Yoga" class?\n\nTime: 7:00 AM - 8:00 AM\nTrainer: Sarah Johnson',
+                'Book Now',
+                'Cancel'
+            ).then(confirmed => {
+                if (confirmed) {
+                    showToast.success('Class Booked!', 'Successfully booked Morning Yoga class!');
+                } else {
+                    showToast.info('Cancelled', 'Class booking was cancelled.');
+                }
+            });
+        }
+        
+        function testMultipleToasts() {
+            showToast.info('Welcome!', 'You have 3 new notifications');
+            setTimeout(() => showToast.success('Achievement!', 'You completed your first workout!'), 500);
+            setTimeout(() => showToast.warning('Reminder', 'Don\'t forget to log your meals today'), 1000);
+            setTimeout(() => showToast.error('Error', 'Failed to sync workout data'), 1500);
+        }
+    </script>
+</body>
+</html>

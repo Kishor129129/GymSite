@@ -14,8 +14,10 @@ function initializeCommunityPage() {
     
     if (!isLoggedIn) {
         // Redirect to registration if not logged in
-        alert('Please register first to access the community features.');
-        window.location.href = 'index.html#register1';
+        showToast.warning('Login Required', 'Please register first to access the community features.');
+        setTimeout(() => {
+            window.location.href = 'index.html#register1';
+        }, 2000);
         return;
     }
     
@@ -419,7 +421,7 @@ function createPost() {
     const content = document.getElementById('postContent').value.trim();
     
     if (!content) {
-        alert('Please enter some content for your post.');
+        showToast.warning('Content Required', 'Please enter some content for your post.');
         return;
     }
     
@@ -467,12 +469,12 @@ function toggleLike(postId) {
 
 // Show comments (placeholder)
 function showComments(postId) {
-    alert('Comments feature coming soon!');
+    showToast.info('Coming Soon', 'Comments feature coming soon!');
 }
 
 // Share post (placeholder)
 function sharePost(postId) {
-    alert('Share feature coming soon!');
+    showToast.info('Coming Soon', 'Share feature coming soon!');
 }
 
 // Send buddy request
@@ -487,7 +489,7 @@ function sendBuddyRequest(buddyId) {
 
 // View buddy profile
 function viewBuddyProfile(buddyId) {
-    alert('Buddy profile view coming soon!');
+    showToast.info('Coming Soon', 'Buddy profile view coming soon!');
 }
 
 // Filter buddies by search term
@@ -635,12 +637,12 @@ function declineFriendRequest(requestId) {
 
 // Message friend (placeholder)
 function messageFriend(friendId) {
-    alert('Messaging feature coming soon!');
+    showToast.info('Coming Soon', 'Messaging feature coming soon!');
 }
 
 // Workout with friend (placeholder)
 function workoutWithFriend(friendId) {
-    alert('Workout coordination feature coming soon!');
+    showToast.info('Coming Soon', 'Workout coordination feature coming soon!');
 }
 
 // Send friend request
@@ -649,7 +651,7 @@ function sendFriendRequest() {
     const message = document.getElementById('friendMessage').value.trim();
     
     if (!searchTerm) {
-        alert('Please enter a username or email.');
+        showToast.warning('Search Required', 'Please enter a username or email.');
         return;
     }
     
@@ -695,7 +697,7 @@ function shareWorkout() {
     const privacy = document.getElementById('workoutPrivacy').value;
     
     if (!workoutId) {
-        alert('Please select a workout to share.');
+        showToast.warning('Workout Required', 'Please select a workout to share.');
         return;
     }
     

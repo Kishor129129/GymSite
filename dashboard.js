@@ -14,8 +14,10 @@ function initializeDashboard() {
     
     if (!isLoggedIn) {
         // Redirect to registration if not logged in
-        alert('Please register first to access your dashboard.');
-        window.location.href = 'index.html#register1';
+        showToast.warning('Login Required', 'Please register first to access your dashboard.');
+        setTimeout(() => {
+            window.location.href = 'index.html#register1';
+        }, 2000);
         return;
     }
     
@@ -321,7 +323,7 @@ function showAchievementDetails(achievementId) {
         'thirty-streak': 'Maintain a 30-day workout streak to unlock this achievement!'
     };
     
-    alert(achievements[achievementId] || 'Achievement details not found.');
+    showToast.info('Achievement Details', achievements[achievementId] || 'Achievement details not found.');
 }
 
 // Setup event listeners

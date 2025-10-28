@@ -14,8 +14,10 @@ function initializeNutritionPage() {
     
     if (!isLoggedIn) {
         // Redirect to registration if not logged in
-        alert('Please register first to access nutrition tracking.');
-        window.location.href = 'index.html#register1';
+        showToast.warning('Login Required', 'Please register first to access nutrition tracking.');
+        setTimeout(() => {
+            window.location.href = 'index.html#register1';
+        }, 2000);
         return;
     }
     
