@@ -214,3 +214,6 @@ window.alert = function(message) {
 window.confirm = function(message) {
     return window.toast.confirm('Confirmation', message);
 };
+
+
+

@@ -281,6 +281,132 @@ body{
         width: 100%;
     }
 }
+
+/* Beautiful Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, yellowgreen, #7cb342);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(154, 205, 50, 0.4);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(154, 205, 50, 0.6);
+    background: linear-gradient(135deg, #8bb83a, yellowgreen);
+}
+
+.scroll-to-top:active {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.scroll-to-top i {
+    color: #fff;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover i {
+    transform: translateY(-3px);
+}
+
+.scroll-to-top::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.scroll-to-top:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.scroll-to-top .scroll-progress {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: rgba(255, 255, 255, 0.5);
+    animation: rotate 2s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-to-top.show .scroll-progress {
+    opacity: 1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulse animation for attention */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(154, 205, 50, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(154, 205, 50, 0.8);
+    }
+}
+
+.scroll-to-top.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scroll-to-top i {
+        font-size: 18px;
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
 /* Start Header */
 header{
     width: 100%;
