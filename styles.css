@@ -407,6 +407,61 @@ body{
 html {
     scroll-behavior: smooth;
 }
+
+/* Animated Number Counter System */
+.stat-number {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.stat-number.animating {
+    animation: numberPulse 0.5s ease;
+}
+
+@keyframes numberPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        color: yellowgreen;
+    }
+}
+
+.stat-number.counted {
+    color: yellowgreen;
+    font-weight: 700;
+}
+
+/* Fade-in animation for stat containers */
+.stat-item,
+.stat-card,
+.social-stat {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.stat-item.visible,
+.stat-card.visible,
+.social-stat.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation delay for multiple stats */
+.stat-item:nth-child(1) { transition-delay: 0.1s; }
+.stat-item:nth-child(2) { transition-delay: 0.2s; }
+.stat-item:nth-child(3) { transition-delay: 0.3s; }
+.stat-item:nth-child(4) { transition-delay: 0.4s; }
+
+.stat-card:nth-child(1) { transition-delay: 0.1s; }
+.stat-card:nth-child(2) { transition-delay: 0.2s; }
+.stat-card:nth-child(3) { transition-delay: 0.3s; }
+
+.social-stat:nth-child(1) { transition-delay: 0.1s; }
+.social-stat:nth-child(2) { transition-delay: 0.2s; }
+.social-stat:nth-child(3) { transition-delay: 0.3s; }
 /* Start Header */
 header{
     width: 100%;

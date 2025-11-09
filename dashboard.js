@@ -44,15 +44,34 @@ function loadMemberStats() {
     
     // Calculate current streak
     const currentStreak = calculateCurrentStreak(workouts);
-    document.getElementById('currentStreak').textContent = currentStreak;
+    const streakElement = document.getElementById('currentStreak');
+    if (streakElement) {
+        streakElement.setAttribute('data-target', currentStreak);
+        streakElement.textContent = '0';
+    }
     
     // Calculate workouts this week
     const workoutsThisWeek = calculateWorkoutsThisWeek(workouts);
-    document.getElementById('workoutsThisWeek').textContent = workoutsThisWeek;
+    const workoutsElement = document.getElementById('workoutsThisWeek');
+    if (workoutsElement) {
+        workoutsElement.setAttribute('data-target', workoutsThisWeek);
+        workoutsElement.textContent = '0';
+    }
     
     // Calculate classes booked
     const classesBooked = bookings.length;
-    document.getElementById('classesBooked').textContent = classesBooked;
+    const classesElement = document.getElementById('classesBooked');
+    if (classesElement) {
+        classesElement.setAttribute('data-target', classesBooked);
+        classesElement.textContent = '0';
+    }
+    
+    // Trigger animated counters
+    setTimeout(() => {
+        if (typeof window.initAnimatedCounters === 'function') {
+            window.initAnimatedCounters();
+        }
+    }, 300);
 }
 
 // Calculate current workout streak
@@ -556,9 +575,30 @@ function loadSocialStats() {
     const totalComments = userPosts.reduce((sum, post) => sum + post.comments, 0);
     const totalFriends = friends.length;
     
-    document.getElementById('totalLikes').textContent = totalLikes;
-    document.getElementById('totalComments').textContent = totalComments;
-    document.getElementById('totalFriends').textContent = totalFriends;
+    // Set data-target attributes for animation
+    const likesElement = document.getElementById('totalLikes');
+    const commentsElement = document.getElementById('totalComments');
+    const friendsElement = document.getElementById('totalFriends');
+    
+    if (likesElement) {
+        likesElement.setAttribute('data-target', totalLikes);
+        likesElement.textContent = '0';
+    }
+    if (commentsElement) {
+        commentsElement.setAttribute('data-target', totalComments);
+        commentsElement.textContent = '0';
+    }
+    if (friendsElement) {
+        friendsElement.setAttribute('data-target', totalFriends);
+        friendsElement.textContent = '0';
+    }
+    
+    // Trigger animated counters after stats are loaded
+    if (typeof window.initAnimatedCounters === 'function') {
+        setTimeout(() => {
+            window.initAnimatedCounters();
+        }, 100);
+    }
 }
 
 // Format timestamp for community activity

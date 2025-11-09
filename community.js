@@ -166,10 +166,30 @@ function updateCommunityStats() {
     const buddies = JSON.parse(localStorage.getItem('communityBuddies') || '[]');
     const friends = JSON.parse(localStorage.getItem('communityFriends') || '[]');
     
-    // Simulate dynamic stats
-    document.getElementById('totalMembers').textContent = '1,247';
-    document.getElementById('workoutsToday').textContent = '89';
-    document.getElementById('challengesActive').textContent = '3';
+    // Simulate dynamic stats with data-target for animation
+    const membersElement = document.getElementById('totalMembers');
+    const workoutsElement = document.getElementById('workoutsToday');
+    const challengesElement = document.getElementById('challengesActive');
+    
+    if (membersElement) {
+        membersElement.setAttribute('data-target', '1247');
+        membersElement.textContent = '0';
+    }
+    if (workoutsElement) {
+        workoutsElement.setAttribute('data-target', '89');
+        workoutsElement.textContent = '0';
+    }
+    if (challengesElement) {
+        challengesElement.setAttribute('data-target', '3');
+        challengesElement.textContent = '0';
+    }
+    
+    // Trigger animated counters
+    setTimeout(() => {
+        if (typeof window.initAnimatedCounters === 'function') {
+            window.initAnimatedCounters();
+        }
+    }, 300);
 }
 
 // Load community feed
