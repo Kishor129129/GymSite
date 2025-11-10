@@ -16,6 +16,437 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
+/* ============================================
+   DARK MODE / THEME SYSTEM
+   ============================================ */
+
+/* CSS Variables for Light Theme (Default) */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --border-color: #dee2e6;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --overlay: rgba(0, 0, 0, 0.5);
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --header-bg: rgba(0, 0, 0, 0.1);
+    --nav-text: #ffffff;
+    --accent-color: yellowgreen;
+    --accent-hover: #8bb83a;
+}
+
+/* CSS Variables for Dark Theme */
+:root.dark {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #242424;
+    --bg-tertiary: #2d2d2d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #808080;
+    --border-color: #404040;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.5);
+    --overlay: rgba(0, 0, 0, 0.7);
+    --card-bg: #2d2d2d;
+    --input-bg: #242424;
+    --header-bg: rgba(0, 0, 0, 0.3);
+    --nav-text: #ffffff;
+    --accent-color: yellowgreen;
+    --accent-hover: #9ccc3b;
+}
+
+/* Theme Switcher Button */
+.theme-switcher {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--nav-text);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    backdrop-filter: blur(10px);
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--accent-color);
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(154, 205, 50, 0.3);
+}
+
+.theme-toggle-btn:active {
+    transform: rotate(15deg) scale(0.95);
+}
+
+.theme-switcher-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Dark Mode Styles */
+.dark body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark header {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),
+    url(./images/background.jpg);
+}
+
+.dark .toast {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.dark .toast-title {
+    color: var(--text-primary);
+}
+
+.dark .toast-message {
+    color: var(--text-secondary);
+}
+
+.dark .toast-close {
+    color: var(--text-tertiary);
+}
+
+.dark .toast-close:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.dark .toast-confirm {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+.dark .toast-confirm-title {
+    color: var(--text-primary);
+}
+
+.dark .toast-confirm-message {
+    color: var(--text-secondary);
+}
+
+.dark .toast-confirm-overlay {
+    background: var(--overlay);
+}
+
+.dark .toast-confirm-btn.cancel {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.dark .toast-confirm-btn.cancel:hover {
+    background: var(--bg-secondary);
+}
+
+/* Dark Mode for Sections */
+.dark section {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark .about,
+.dark .services,
+.dark .classes,
+.dark .trainers,
+.dark .pricing_table,
+.dark .register {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark .about .content h1,
+.dark .services h1,
+.dark .classes h1,
+.dark .trainers h1,
+.dark .pricing_table h1,
+.dark .register h1 {
+    color: var(--text-primary);
+}
+
+.dark .about .content p,
+.dark .box .info p,
+.dark .trainers p {
+    color: var(--text-secondary);
+}
+
+/* Dark Mode for Cards and Boxes */
+.dark .box,
+.dark .class-card,
+.dark .pricing_box,
+.dark .dashboard-card,
+.dark .nutrition-card,
+.dark .post-card,
+.dark .challenge-card,
+.dark .buddy-card,
+.dark .friend-card {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.dark .box:hover,
+.dark .class-card:hover,
+.dark .pricing_box:hover {
+    box-shadow: 0 8px 20px var(--shadow-hover);
+}
+
+.dark .box .info h3,
+.dark .class-card h3,
+.dark .pricing_box h2,
+.dark .dashboard-card h3 {
+    color: var(--text-primary);
+}
+
+.dark .box .info p,
+.dark .class-info p {
+    color: var(--text-secondary);
+}
+
+/* Dark Mode for Forms */
+.dark input,
+.dark textarea,
+.dark select {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+    color: var(--text-tertiary);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(154, 205, 50, 0.1);
+}
+
+/* Dark Mode for Buttons */
+.dark .btn {
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+
+.dark .btn:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/* Dark Mode for Modals */
+.dark .modal {
+    background: var(--overlay);
+}
+
+.dark .modal-content {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+.dark .modal-header h3 {
+    color: var(--text-primary);
+}
+
+.dark .modal-body label {
+    color: var(--text-primary);
+}
+
+.dark .close {
+    color: var(--text-primary);
+}
+
+.dark .close:hover {
+    color: var(--accent-color);
+}
+
+/* Dark Mode for Dashboard */
+.dark .dashboard-section,
+.dark .schedule-section,
+.dark .nutrition-section,
+.dark .community-section {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark .stat-item,
+.dark .stat-card,
+.dark .social-stat {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.dark .stat-label,
+.dark .stat-info p {
+    color: var(--text-secondary);
+}
+
+.dark .progress-bar {
+    background: var(--bg-tertiary);
+}
+
+.dark .progress-fill {
+    background: var(--accent-color);
+}
+
+.dark .activity-item,
+.dark .class-item,
+.dark .meal-item,
+.dark .goal-item {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .activity-info h4,
+.dark .class-info h4,
+.dark .meal-info h4 {
+    color: var(--text-primary);
+}
+
+.dark .activity-info p,
+.dark .class-info p,
+.dark .meal-info p {
+    color: var(--text-secondary);
+}
+
+/* Dark Mode for Navigation Links */
+.dark nav .links li a {
+    color: var(--nav-text);
+}
+
+.dark nav .links li a:hover,
+.dark nav .links li a.active {
+    color: var(--accent-color);
+}
+
+/* Dark Mode for Footer */
+.dark footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-top-color: var(--border-color);
+}
+
+/* Dark Mode for Tables and Lists */
+.dark table {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.dark table th {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.dark table td {
+    border-color: var(--border-color);
+}
+
+.dark .no-activity,
+.dark .no-classes,
+.dark .no-meals,
+.dark .no-goals,
+.dark .no-posts,
+.dark .no-buddies,
+.dark .no-friends {
+    color: var(--text-secondary);
+}
+
+.dark .no-activity i,
+.dark .no-classes i,
+.dark .no-meals i,
+.dark .no-goals i {
+    color: var(--text-tertiary);
+}
+
+/* Dark Mode for Payment Page */
+.dark .payz {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark .payz .title {
+    color: var(--text-primary);
+}
+
+.dark .payz .inputBox span {
+    color: var(--text-primary);
+}
+
+.dark .payz .inputBox input {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.dark .payz .submit-btn {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.dark .payz .submit-btn:hover {
+    background: var(--accent-hover);
+}
+
+/* Smooth Theme Transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Keep transitions for specific elements that need instant updates */
+.theme-toggle-btn,
+.theme-toggle-btn i {
+    transition: all 0.3s ease;
+}
+
+/* Mobile Responsive for Theme Switcher */
+@media (max-width: 850px) {
+    .theme-switcher {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    
+    .theme-switcher-item {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+    
+    .theme-toggle-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+
 /* Toast Notification System */
 .toast-container {
     position: fixed;

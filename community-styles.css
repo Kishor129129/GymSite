@@ -865,3 +865,152 @@
         justify-content: center;
     }
 }
+
+/* ============================================
+   DARK MODE STYLES FOR COMMUNITY PAGE
+   ============================================ */
+
+.dark .community-section {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark .community-tabs {
+    border-bottom-color: var(--border-color);
+}
+
+.dark .post-creator,
+.dark .post-card,
+.dark .challenge-card,
+.dark .buddy-card,
+.dark .friend-card,
+.dark .friend-requests {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.dark .post-creator:hover,
+.dark .post-card:hover,
+.dark .challenge-card:hover,
+.dark .buddy-card:hover,
+.dark .friend-card:hover {
+    box-shadow: 0 8px 20px var(--shadow-hover);
+}
+
+.dark .creator-input textarea,
+.dark .buddy-search input {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.dark .creator-input textarea:focus,
+.dark .buddy-search input:focus {
+    border-color: var(--accent-color);
+}
+
+.dark .post-user-info h4,
+.dark .challenge-header h3,
+.dark .buddy-info h4,
+.dark .friend-info h4,
+.dark .friends-header h3,
+.dark .friend-requests h4,
+.dark .request-info h5 {
+    color: var(--text-primary);
+}
+
+.dark .post-user-info p,
+.dark .post-content p,
+.dark .challenge-content p,
+.dark .buddy-info p,
+.dark .friend-info p,
+.dark .request-info p,
+.dark .stat-label,
+.dark .buddy-stat .stat-label {
+    color: var(--text-secondary);
+}
+
+.dark .post-actions {
+    border-top-color: var(--border-color);
+}
+
+.dark .post-action {
+    color: var(--text-secondary);
+}
+
+.dark .post-action:hover {
+    color: var(--accent-color);
+}
+
+.dark .challenge-card.featured {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    border-color: var(--accent-color);
+}
+
+.dark .more-participants {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.dark .buddy-stats,
+.dark .social-stat {
+    background: var(--bg-tertiary);
+}
+
+.dark .buddy-btn.secondary {
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.dark .buddy-btn.secondary:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.dark .friend-status.online {
+    background: rgba(40, 167, 69, 0.2);
+    color: #4caf50;
+}
+
+.dark .friend-status.offline {
+    background: rgba(220, 53, 69, 0.2);
+    color: #f44336;
+}
+
+.dark .request-item {
+    border-bottom-color: var(--border-color);
+}
+
+.dark .community-activity-item {
+    border-bottom-color: var(--border-color);
+}
+
+.dark .community-activity-item:hover {
+    background: var(--bg-secondary);
+}
+
+.dark .activity-content h4 {
+    color: var(--text-primary);
+}
+
+.dark .activity-content p {
+    color: var(--text-secondary);
+}
+
+.dark .activity-content small,
+.dark .activity-stats {
+    color: var(--text-tertiary);
+}
+
+.dark .community-actions {
+    border-top-color: var(--border-color);
+}
+
+.dark .no-community-activity {
+    color: var(--text-secondary);
+}
+
+.dark .no-community-activity i {
+    color: var(--text-tertiary);
+}
