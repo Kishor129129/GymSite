@@ -271,44 +271,58 @@ function closeRecipeFinder() {
 
 // Log meal
 function logMeal() {
-    const mealData = {
-        id: Date.now(),
-        type: document.getElementById('mealType').value,
-        foodItem: document.getElementById('foodItem').value,
-        calories: parseInt(document.getElementById('mealCalories').value),
-        protein: parseFloat(document.getElementById('mealProtein').value) || 0,
-        carbs: parseFloat(document.getElementById('mealCarbs').value) || 0,
-        fat: parseFloat(document.getElementById('mealFat').value) || 0,
-        notes: document.getElementById('mealNotes').value,
-        date: new Date().toISOString()
-    };
+    const submitButton = document.querySelector('#mealForm button[type="submit"]');
+    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(submitButton, 'Logging...') : null;
     
-    const meals = JSON.parse(localStorage.getItem('userMeals') || '[]');
-    meals.push(mealData);
-    localStorage.setItem('userMeals', JSON.stringify(meals));
-    
-    showSuccessNotification('Meal logged successfully!');
-    closeMealLogger();
-    loadNutritionData(); // Refresh data
+    // Simulate async save
+    setTimeout(() => {
+        const mealData = {
+            id: Date.now(),
+            type: document.getElementById('mealType').value,
+            foodItem: document.getElementById('foodItem').value,
+            calories: parseInt(document.getElementById('mealCalories').value),
+            protein: parseFloat(document.getElementById('mealProtein').value) || 0,
+            carbs: parseFloat(document.getElementById('mealCarbs').value) || 0,
+            fat: parseFloat(document.getElementById('mealFat').value) || 0,
+            notes: document.getElementById('mealNotes').value,
+            date: new Date().toISOString()
+        };
+        
+        const meals = JSON.parse(localStorage.getItem('userMeals') || '[]');
+        meals.push(mealData);
+        localStorage.setItem('userMeals', JSON.stringify(meals));
+        
+        if (hideSpinner) hideSpinner();
+        showSuccessNotification('Meal logged successfully!');
+        closeMealLogger();
+        loadNutritionData(); // Refresh data
+    }, 500);
 }
 
 // Log water
 function logWater() {
-    const waterData = {
-        id: Date.now(),
-        amount: parseInt(document.getElementById('waterAmount').value),
-        time: document.getElementById('waterTime').value,
-        notes: document.getElementById('waterNotes').value,
-        date: new Date().toISOString()
-    };
+    const submitButton = document.querySelector('#waterForm button[type="submit"]');
+    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(submitButton, 'Logging...') : null;
     
-    const water = JSON.parse(localStorage.getItem('userWater') || '[]');
-    water.push(waterData);
-    localStorage.setItem('userWater', JSON.stringify(water));
-    
-    showSuccessNotification('Water intake logged successfully!');
-    closeWaterTracker();
-    loadNutritionData(); // Refresh data
+    // Simulate async save
+    setTimeout(() => {
+        const waterData = {
+            id: Date.now(),
+            amount: parseInt(document.getElementById('waterAmount').value),
+            time: document.getElementById('waterTime').value,
+            notes: document.getElementById('waterNotes').value,
+            date: new Date().toISOString()
+        };
+        
+        const water = JSON.parse(localStorage.getItem('userWater') || '[]');
+        water.push(waterData);
+        localStorage.setItem('userWater', JSON.stringify(water));
+        
+        if (hideSpinner) hideSpinner();
+        showSuccessNotification('Water intake logged successfully!');
+        closeWaterTracker();
+        loadNutritionData(); // Refresh data
+    }, 500);
 }
 
 // Initialize planner calendar

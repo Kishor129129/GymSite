@@ -80,35 +80,42 @@ function initializeBookingSystem() {
                 'Cancel'
             ).then(confirmed => {
                 if (confirmed) {
-                    // Create booking object
-                    const booking = {
-                        id: Date.now(),
-                        classId: classId,
-                        className: className,
-                        day: day,
-                        time: classTime,
-                        trainer: trainer,
-                        bookingDate: new Date().toISOString()
-                    };
+                    // Show button spinner
+                    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(button, 'Booking...') : null;
                     
-                    // Save booking to localStorage
-                    existingBookings.push(booking);
-                    localStorage.setItem('userBookings', JSON.stringify(existingBookings));
-                    
-                    // Update button state
-                    button.textContent = 'Booked!';
-                    button.style.backgroundColor = '#28a745';
-                    button.style.borderColor = '#28a745';
-                    button.disabled = true;
-                    
-                    // Show success notification
-                    showToast.success('Class Booked!', `Successfully booked "${className}" class!`);
-                    
-                    // Update available spots
-                    updateAvailableSpots(classSlot);
-                    
-                    // Refresh bookings list
-                    loadUserBookings();
+                    // Simulate async booking process
+                    setTimeout(() => {
+                        // Create booking object
+                        const booking = {
+                            id: Date.now(),
+                            classId: classId,
+                            className: className,
+                            day: day,
+                            time: classTime,
+                            trainer: trainer,
+                            bookingDate: new Date().toISOString()
+                        };
+                        
+                        // Save booking to localStorage
+                        existingBookings.push(booking);
+                        localStorage.setItem('userBookings', JSON.stringify(existingBookings));
+                        
+                        // Update button state
+                        if (hideSpinner) hideSpinner();
+                        button.textContent = 'Booked!';
+                        button.style.backgroundColor = '#28a745';
+                        button.style.borderColor = '#28a745';
+                        button.disabled = true;
+                        
+                        // Show success notification
+                        showToast.success('Class Booked!', `Successfully booked "${className}" class!`);
+                        
+                        // Update available spots
+                        updateAvailableSpots(classSlot);
+                        
+                        // Refresh bookings list
+                        loadUserBookings();
+                    }, 600);
                 }
             });
         });

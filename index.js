@@ -85,25 +85,34 @@ registrationForm.addEventListener('submit', function(event) {
     // Prevent the default form submission
     event.preventDefault();
 
-    // Display the success message
-    successMessage.style.display = 'block';
+    const submitButton = registrationForm.querySelector('input[type="submit"]');
+    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(submitButton, 'Registering...') : null;
 
-    // Simulate user login after registration
-    const firstName = registrationForm.querySelector('input[placeholder="First Name"]').value || 'Member';
-    localStorage.setItem('userLoggedIn', 'true');
-    localStorage.setItem('userBookings', '[]');
-    localStorage.setItem('memberName', firstName);
-    localStorage.setItem('userWorkouts', '[]');
-    localStorage.setItem('userPhotos', '[]');
-    localStorage.setItem('userGoals', '[]');
-
-    // Hide the success message after 5 seconds
+    // Simulate async registration process
     setTimeout(function() {
-        successMessage.style.display = 'none';
-    }, 5000);
+        // Display the success message
+        successMessage.style.display = 'block';
 
-    // Clear the form fields after submission
-    registrationForm.reset();
+        // Simulate user login after registration
+        const firstName = registrationForm.querySelector('input[placeholder="First Name"]').value || 'Member';
+        localStorage.setItem('userLoggedIn', 'true');
+        localStorage.setItem('userBookings', '[]');
+        localStorage.setItem('memberName', firstName);
+        localStorage.setItem('userWorkouts', '[]');
+        localStorage.setItem('userPhotos', '[]');
+        localStorage.setItem('userGoals', '[]');
+
+        // Hide spinner
+        if (hideSpinner) hideSpinner();
+
+        // Hide the success message after 5 seconds
+        setTimeout(function() {
+            successMessage.style.display = 'none';
+        }, 5000);
+
+        // Clear the form fields after submission
+        registrationForm.reset();
+    }, 800); // Simulate network delay
 });
 
 // Class Booking Functionality
@@ -142,17 +151,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Cancel'
             ).then(confirmed => {
                 if (confirmed) {
-                    // Update button state
-                    button.textContent = 'Booked!';
-                    button.style.backgroundColor = '#28a745';
-                    button.style.borderColor = '#28a745';
-                    button.disabled = true;
+                    // Show button spinner
+                    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(button, 'Booking...') : null;
                     
-                    // Show success message
-                    showBookingSuccess(classTitle);
-                    
-                    // Update available spots (simulate)
-                    updateAvailableSpots(classCard);
+                    // Simulate async booking process
+                    setTimeout(() => {
+                        // Update button state
+                        if (hideSpinner) hideSpinner();
+                        button.textContent = 'Booked!';
+                        button.style.backgroundColor = '#28a745';
+                        button.style.borderColor = '#28a745';
+                        button.disabled = true;
+                        
+                        // Show success message
+                        showBookingSuccess(classTitle);
+                        
+                        // Update available spots (simulate)
+                        updateAvailableSpots(classCard);
+                    }, 600);
                 }
             });
         });

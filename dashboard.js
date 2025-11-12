@@ -28,13 +28,22 @@ function initializeDashboard() {
 
 // Load all dashboard data
 function loadDashboardData() {
-    loadMemberStats();
-    loadRecentActivity();
-    loadUpcomingClasses();
-    loadProgressOverview();
-    loadAchievements();
-    loadCommunityActivity();
-    loadSocialStats();
+    // Show loading spinner for initial load only
+    const isInitialLoad = !document.querySelector('.dashboard-card .activity-item, .dashboard-card .class-item');
+    const hideSpinner = (isInitialLoad && window.loadingSpinner) ? window.loadingSpinner.show('Loading dashboard...', { size: 'small' }) : null;
+    
+    // Simulate async data loading
+    setTimeout(() => {
+        loadMemberStats();
+        loadRecentActivity();
+        loadUpcomingClasses();
+        loadProgressOverview();
+        loadAchievements();
+        loadCommunityActivity();
+        loadSocialStats();
+        
+        if (hideSpinner) hideSpinner();
+    }, 300);
 }
 
 // Load member statistics
@@ -396,62 +405,83 @@ function closeGoalSetter() {
 
 // Log workout
 function logWorkout() {
-    const workoutData = {
-        id: Date.now(),
-        type: document.getElementById('workoutType').value,
-        duration: parseInt(document.getElementById('workoutDuration').value),
-        intensity: document.getElementById('workoutIntensity').value,
-        notes: document.getElementById('workoutNotes').value,
-        date: new Date().toISOString()
-    };
+    const submitButton = document.querySelector('#workoutForm button[type="submit"]');
+    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(submitButton, 'Logging...') : null;
     
-    const workouts = JSON.parse(localStorage.getItem('userWorkouts') || '[]');
-    workouts.push(workoutData);
-    localStorage.setItem('userWorkouts', JSON.stringify(workouts));
-    
-    showSuccessNotification('Workout logged successfully!');
-    closeWorkoutLogger();
-    loadDashboardData(); // Refresh dashboard
+    // Simulate async save
+    setTimeout(() => {
+        const workoutData = {
+            id: Date.now(),
+            type: document.getElementById('workoutType').value,
+            duration: parseInt(document.getElementById('workoutDuration').value),
+            intensity: document.getElementById('workoutIntensity').value,
+            notes: document.getElementById('workoutNotes').value,
+            date: new Date().toISOString()
+        };
+        
+        const workouts = JSON.parse(localStorage.getItem('userWorkouts') || '[]');
+        workouts.push(workoutData);
+        localStorage.setItem('userWorkouts', JSON.stringify(workouts));
+        
+        if (hideSpinner) hideSpinner();
+        showSuccessNotification('Workout logged successfully!');
+        closeWorkoutLogger();
+        loadDashboardData(); // Refresh dashboard
+    }, 500);
 }
 
 // Save progress photo
 function saveProgressPhoto() {
-    const photoData = {
-        id: Date.now(),
-        type: document.getElementById('photoType').value,
-        weight: parseFloat(document.getElementById('photoWeight').value) || null,
-        notes: document.getElementById('photoNotes').value,
-        date: new Date().toISOString()
-    };
+    const submitButton = document.querySelector('#photoForm button[type="submit"]');
+    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(submitButton, 'Saving...') : null;
     
-    const photos = JSON.parse(localStorage.getItem('userPhotos') || '[]');
-    photos.push(photoData);
-    localStorage.setItem('userPhotos', JSON.stringify(photos));
-    
-    showSuccessNotification('Progress photo saved successfully!');
-    closeProgressPhotos();
-    loadDashboardData(); // Refresh dashboard
+    // Simulate async save
+    setTimeout(() => {
+        const photoData = {
+            id: Date.now(),
+            type: document.getElementById('photoType').value,
+            weight: parseFloat(document.getElementById('photoWeight').value) || null,
+            notes: document.getElementById('photoNotes').value,
+            date: new Date().toISOString()
+        };
+        
+        const photos = JSON.parse(localStorage.getItem('userPhotos') || '[]');
+        photos.push(photoData);
+        localStorage.setItem('userPhotos', JSON.stringify(photos));
+        
+        if (hideSpinner) hideSpinner();
+        showSuccessNotification('Progress photo saved successfully!');
+        closeProgressPhotos();
+        loadDashboardData(); // Refresh dashboard
+    }, 500);
 }
 
 // Set goal
 function setGoal() {
-    const goalData = {
-        id: Date.now(),
-        type: document.getElementById('goalType').value,
-        target: parseFloat(document.getElementById('goalTarget').value),
-        current: parseFloat(document.getElementById('goalCurrent').value),
-        targetDate: document.getElementById('goalDate').value,
-        description: document.getElementById('goalDescription').value,
-        createdAt: new Date().toISOString()
-    };
+    const submitButton = document.querySelector('#goalForm button[type="submit"]');
+    const hideSpinner = window.loadingSpinner ? window.loadingSpinner.showButton(submitButton, 'Setting...') : null;
     
-    const goals = JSON.parse(localStorage.getItem('userGoals') || '[]');
-    goals.push(goalData);
-    localStorage.setItem('userGoals', JSON.stringify(goals));
-    
-    showSuccessNotification('Goal set successfully!');
-    closeGoalSetter();
-    loadDashboardData(); // Refresh dashboard
+    // Simulate async save
+    setTimeout(() => {
+        const goalData = {
+            id: Date.now(),
+            type: document.getElementById('goalType').value,
+            target: parseFloat(document.getElementById('goalTarget').value),
+            current: parseFloat(document.getElementById('goalCurrent').value),
+            targetDate: document.getElementById('goalDate').value,
+            description: document.getElementById('goalDescription').value,
+            createdAt: new Date().toISOString()
+        };
+        
+        const goals = JSON.parse(localStorage.getItem('userGoals') || '[]');
+        goals.push(goalData);
+        localStorage.setItem('userGoals', JSON.stringify(goals));
+        
+        if (hideSpinner) hideSpinner();
+        showSuccessNotification('Goal set successfully!');
+        closeGoalSetter();
+        loadDashboardData(); // Refresh dashboard
+    }, 500);
 }
 
 // Show success notification
