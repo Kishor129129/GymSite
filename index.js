@@ -1,52 +1,5 @@
-var mainMenu = document.querySelector('.links')
-var openMenu = document.querySelector('.open')
-var closeMenu = document.querySelector('.close')
-
-openMenu.addEventListener('click', show)
-closeMenu.addEventListener('click', close)
-
-function show() {
-    mainMenu.style.display = 'flex'
-    mainMenu.style.right = '0'
-}
-
-function close() {
-    mainMenu.style.right = '-60%'
-}
-
-// Auto-close mobile menu when navigation links are clicked
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.links a');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            // Check if we're on mobile (menu is visible)
-            if (window.innerWidth <= 850 && mainMenu.style.display === 'flex') {
-                // Small delay to allow navigation to start, then close menu
-                setTimeout(() => {
-                    close();
-                }, 150);
-            }
-        });
-    });
-    
-    // Also close menu when clicking outside of it on mobile
-    document.addEventListener('click', function(event) {
-        if (window.innerWidth <= 850 && 
-            mainMenu.style.display === 'flex' && 
-            !mainMenu.contains(event.target) && 
-            !openMenu.contains(event.target)) {
-            close();
-        }
-    });
-    
-    // Close menu on Escape key press
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && mainMenu.style.display === 'flex') {
-            close();
-        }
-    });
-});
+// Navigation is now handled by enhanced-navigation.js
+// Legacy code removed - enhanced navigation system handles all menu functionality
 
     document.addEventListener('DOMContentLoaded', function() {
         var getStartedButton = document.querySelector('.btn');

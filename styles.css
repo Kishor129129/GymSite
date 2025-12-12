@@ -1137,32 +1137,66 @@ nav{
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    
+    transition: all 0.3s ease;
+    z-index: 9999;
 }
 nav .logo{
     font-size: 3rem;
     cursor: pointer;
+    transition: transform 0.3s ease, font-size 0.3s ease;
+}
+nav .logo:hover{
+    transform: scale(1.05);
 }
 nav .logo span{
     color: yellowgreen;
+    transition: color 0.3s ease;
 }
 nav .links{
     padding-left: 0;
     transition: right 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 nav .links li{
     display: inline-block;
     margin-left: 1rem;
     font-size: 1.5rem;
+    transition: transform 0.3s ease;
 }
 nav .links li a{
     color: #fff;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
-.links .active{
-    color: yellowgreen;
+nav .links li a::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: yellowgreen;
+    transition: width 0.3s ease;
+    border-radius: 2px;
 }
 nav .links li a:hover{
     color: yellowgreen;
+    background: rgba(154, 205, 50, 0.1);
+    transform: translateY(-2px);
+}
+nav .links li a:hover::after,
+nav .links li a.active::after{
+    width: 100%;
+}
+.links .active,
+nav .links li a.active{
+    color: yellowgreen;
+    font-weight: 600;
 }
 header .content{
     position: absolute;
@@ -1211,13 +1245,29 @@ nav .open,.close{
         flex-direction: column;
         z-index: 9999;
         transition: right 0.3s ease;
+        box-shadow: -2px 0 20px rgba(0, 0, 0, 0.2);
     }
     nav .links li{
         font-size: 1.8rem;
         margin: 0.5rem;
+        width: 80%;
+        text-align: center;
     }
     nav .links li a{
         color: #000;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    nav .links li a:hover{
+        background: rgba(154, 205, 50, 0.2);
+        transform: translateX(5px);
+    }
+    nav.sticky .links li a{
+        color: #fff;
+    }
+    nav.sticky .links{
+        background: rgba(0, 0, 0, 0.98);
     }
     nav .open,nav .links .close{
         display: block;

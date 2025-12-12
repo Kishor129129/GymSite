@@ -155,22 +155,27 @@ function loadUserBookings() {
 
 // Cancel booking function
 function cancelBooking(bookingId) {
-    const confirmCancel = confirm('Are you sure you want to cancel this booking?');
-    
-    if (confirmCancel) {
-        const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
-        const updatedBookings = bookings.filter(booking => booking.id !== bookingId);
-        localStorage.setItem('userBookings', JSON.stringify(updatedBookings));
-        
-        // Refresh bookings list
-        loadUserBookings();
-        
-        // Reset booking button on schedule
-        resetBookingButton(bookingId);
-        
-        // Show cancellation notification
-        showCancellationSuccess();
-    }
+    showToast.confirm(
+        'Cancel Booking',
+        'Are you sure you want to cancel this booking?',
+        'Cancel Booking',
+        'Keep Booking'
+    ).then(confirmed => {
+        if (confirmed) {
+            const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+            const updatedBookings = bookings.filter(booking => booking.id !== bookingId);
+            localStorage.setItem('userBookings', JSON.stringify(updatedBookings));
+            
+            // Refresh bookings list
+            loadUserBookings();
+            
+            // Reset booking button on schedule
+            resetBookingButton(bookingId);
+            
+            // Show cancellation notification
+            showToast.error('Booking Cancelled', 'Your class booking has been cancelled successfully.');
+        }
+    });
 }
 
 // Reset booking button after cancellation
